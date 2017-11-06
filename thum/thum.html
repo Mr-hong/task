@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	html,body{
+		margin:0;
+		padding:0;
+	}
+	.warp{
+		position:absolute;
+		width: 270px;
+		height:304px;
+		background:#FEC9AA;
+		border:1px solid #bfab91;
+		margin:0 auto;
+ 	    left: 50%;
+ 		top: 50%;
+		margin-left:-135px;
+		margin-top:-150px;
+		border-radius: 15px;
+	}
+	.warp .one{
+		width: 120px;
+		height: 75px;
+		border-right: 1px solid red;
+		background: linear-gradient(to right,#ffcaa8 50%,#ffe6d9 80%,#fdccb1);
+		border-radius: 0 50px 50px 0;
+		border:1px solid #bfab91;
+		border-left:0;
+		display: block;
+		position:absolute;
+		right:-80px;
+		top:-1px;
+	}
+	.one::after{
+		transform:rotate(-45deg);
+		-ms-transform:rotate(-45deg); 	
+		-moz-transform:rotate(-45deg); 	
+		-webkit-transform:rotate(-45deg); 
+		-o-transform:rotate(-45deg); 
+		content:"";
+		width: 220px;
+		height: 75px;
+		background: linear-gradient(to right,#ffcaa8 50%,#ffe6d9 80%,#fdccb1);
+		border-radius: 0 50px 50px 0;
+		display: block;
+		position:absolute;
+		right:125px;
+		top:-55px;
+	}
+	.one::before{
+		content:"";
+		width: 220px;
+		height: 220px;
+		background: #FEC9AA;
+		border-top:1px solid #bfab91;
+		display: block;
+		position:absolute;
+		right:280px;
+		top:40px;
+	}
+	.two{
+		width: 120px;
+		height: 75px;
+		border-right: 1px solid red;
+		background: linear-gradient(to right,#ffcaa8 50%,#ffe6d9 80%,#fdccb1);
+		border-radius: 0 50px 50px 0;
+		border:1px solid #bfab91;
+		border-left:0;
+		display: block;
+		position:absolute;
+		top:75px;
+		right:-80px;
+	}
+	.two::after{
+		content:"";
+		width: 120px;
+		height: 75px;
+		border-right: 1px solid red;
+		background: linear-gradient(to right,#ffcaa8 50%,#ffe6d9 80%,#fdccb1);
+		border-radius: 0 50px 50px 0;
+		border:1px solid #bfab91;
+		border-left:0;
+		display: block;
+		position:relative;
+		top:75px;
+	}
+	.two::before{
+		content:"";
+		width: 120px;
+		height: 75px;
+		border-right: 1px solid red;
+		background: linear-gradient(to right,#ffcaa8 50%,#ffe6d9 80%,#fdccb1);
+		border-radius: 0 50px 50px 0;
+		border:1px solid #bfab91;
+		border-left:0;
+		display: block;
+		position:relative;
+		top:75px;
+	}
+</style>
+</head>
+<body>
+	<div class="warp hand" id="thumb">
+		<div class="one">
+			
+		</div>
+		<div class="two">
+			
+		</div>
+	</div>
+	<span class="hide" id="animation">+1</span>
+	<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+	<script src="https://cdn.bootcss.com/systemjs/0.20.2/system.js"></script>
+	<script type="text/javascript" src="https://cdn.bootcss.com/systemjs/0.20.2/system-production.src.js"></script>
+	<script type="text/javascript" src="./script/thumb-es.js">
+		SystemJS.config({
+			  baseURL: '/thum/script'
+			});
+
+		SystemJS.import('index-es.js').then(function(m) {
+			$.extend({
+				thumb:m.default.Thumb
+			})
+		      callBack();
+		    });
+		function callBack(){
+			var f=new $.thumb(0,$('#thumb'));
+			f.clickAction();
+		}
+	</script>
+</body>
+</html>
